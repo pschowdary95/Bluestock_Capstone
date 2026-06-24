@@ -1,0 +1,6 @@
+investor_id,amfi_code,transaction_date,transaction_type,amount,kyc_status,state
+1,120503,2026-01-01,SIP,5000,VERIFIED,Telangana
+2,120504,2026-01-02,Lumpsum,10000,VERIFIED,Andhra Pradesh
+3,120503,2026-01-03,Redemption,2000,PENDING,Karnataka
+4,120505,2026-01-04,SIP,3000,VERIFIED,Tamil Nadu
+5,120504,2026-01-05,Lumpsum,15000,REJECTED,Kerala
