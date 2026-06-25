@@ -1,41 +1,44 @@
+import os
 import pandas as pd
 from sqlalchemy import create_engine
 
-engine = create_engine(
-    "sqlite:///database/bluestock_mf.db"
-)
+PROCESSED_DIR = "data/processed"
+DB_PATH = "database/bluestock_mf.db"
 
-nav = pd.read_csv(
-    "data/processed/nav_history_cleaned.csv"
-)
+os.makedirs("database", exist_ok=True)
 
-txn = pd.read_csv(
-    "data/processed/investor_transactions_cleaned.csv"
-)
+engine = create_engine(f"sqlite:///{DB_PATH}")
 
-perf = pd.read_csv(
-    "data/processed/scheme_performance_cleaned.csv"
-)
+files = {
+    "dim_fund": "01_fund_master_cleaned.csv",
+    "fact_nav": "02_nav_history_cleaned.csv",
+    "fact_aum": "03_aum_by_fund_house_cleaned.csv",
+    "fact_sip_industry": "04_monthly_sip_inflows_cleaned.csv",
+    "fact_category_inflows": "05_category_inflows_cleaned.csv",
+    "fact_folio": "06_industry_folio_count_cleaned.csv",
+    "fact_performance": "07_scheme_performance_cleaned.csv",
+    "fact_transactions": "08_investor_transactions_cleaned.csv",
+    "fact_portfolio": "09_portfolio_holdings_cleaned.csv",
+    "fact_benchmark": "10_benchmark_indices_cleaned.csv"
+}
 
-nav.to_sql(
-    "fact_nav",
-    engine,
-    if_exists="replace",
-    index=False
-)
+print("=" * 60)
+print("LOADING CLEANED DATA INTO SQLITE")
+print("=" * 60)
 
-txn.to_sql(
-    "fact_transactions",
-    engine,
-    if_exists="replace",
-    index=False
-)
+for table, file in files.items():
+    path = os.path.join(PROCESSED_DIR, file)
 
-perf.to_sql(
-    "fact_performance",
-    engine,
-    if_exists="replace",
-    index=False
-)
+    df = pd.read_csv(path)
 
-print("SQLite Database Created Successfully")
+    df.to_sql(
+        table,
+        engine,
+        if_exists="replace",
+        index=False
+    )
+
+    print(f"✔ {table:25} {len(df):7} rows")
+
+print("\nSQLite Database Created Successfully!")
+print(f"Database saved at: {DB_PATH}")
