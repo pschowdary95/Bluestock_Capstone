@@ -1,4 +1,5 @@
 # 📊 Bluestock Mutual Fund Analytics
+<<<<<<< HEAD
 A complete end-to-end Data Analytics Capstone Project that analyzes Indian Mutual Fund data using Python, SQLite, Power BI, and Data Visualization techniques. The project focuses on transforming raw financial datasets into meaningful insights through ETL, Exploratory Data Analysis (EDA), Performance Analytics, Risk Analysis, and Interactive Dashboards.
 ---
 # 📌 Project Overview
@@ -9,6 +10,27 @@ The project integrates multiple datasets, performs data cleaning, calculates fin
 # 🎯 Problem Statement
 Mutual fund investors often struggle to compare funds because the required information is spread across multiple datasets and reports.
 This project aims to:
+=======
+
+A complete end-to-end Data Analytics Capstone Project that analyzes Indian Mutual Fund data using Python, SQLite, Power BI, and Data Visualization techniques. The project focuses on transforming raw financial datasets into meaningful insights through ETL, Exploratory Data Analysis (EDA), Performance Analytics, Risk Analysis, and Interactive Dashboards.
+
+---
+
+# 📌 Project Overview
+
+The Mutual Fund Analytics project is designed to help investors and financial analysts understand mutual fund performance using historical NAV data, SIP inflows, AUM, benchmark indices, and portfolio holdings.
+
+The project integrates multiple datasets, performs data cleaning, calculates financial metrics, stores processed data in SQLite, and visualizes insights using Power BI.
+
+---
+
+# 🎯 Problem Statement
+
+Mutual fund investors often struggle to compare funds because the required information is spread across multiple datasets and reports.
+
+This project aims to:
+
+>>>>>>> ac635b1 (Added professional README)
 - Integrate multiple mutual fund datasets
 - Build an automated ETL pipeline
 - Perform financial performance analysis
